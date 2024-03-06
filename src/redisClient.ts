@@ -1,15 +1,15 @@
 import { Client, Repository } from 'redis-om';
+require('dotenv').config()
 
-import { config } from 'dotenv';
-config()
+
 
 
 const redisClient = new Client();
 
 
 (async () => {
-    // await redisClient.open(`redis://${process.env.USER}:${process.env.PASS}@${process.env.URL}`)
-    await redisClient.open(`redis://default:gkRneejbeghkp4jIG4zCUyY5grqvJN3L@redis-17324.c10.us-east-1-2.ec2.cloud.redislabs.com:17324`)
+    await redisClient.open(`redis://default:${process.env.PASS}@${process.env.URL}`)
+    // await redisClient.open(`redis://default:gkRneejbeghkp4jIG4zCUyY5grqvJN3L@redis-17324.c10.us-east-1-2.ec2.cloud.redislabs.com:17324`)
     try {
         await redisClient.isOpen()
         console.log('connected to redis')
